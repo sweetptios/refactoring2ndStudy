@@ -9,10 +9,7 @@ function statement(invoice, plays) {
         result += ' ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}) \n';
         totalAmount += amountFor(perf);
     }
-    let volumeCredits = 0;
-    for (let perf of invoice.performances) {
-        volumeCredits += volumeCreditsFor(perf)
-    }
+    let volumeCredits = totalVolmeCredits();
 
     result += '총액: S{usd(totalAmount)}In';
     result += '적립 포인트: ${volumeCredits}점ln';
@@ -35,6 +32,14 @@ function usd(aNumber) {
     return new Intl.NumberFormat("en-US",
                         { style: "currency", currency: "USD", 
                           minimumFractionDigits: 2 }).format(aNumber/100);
+}
+
+function totalVolmeCredits() {
+    let result = 0;
+    for (let perf of invoice.performances) {
+        result += volumeCreditsFor(perf)
+    }
+    return result
 }
 
 function amountFor(aPerformance) {
