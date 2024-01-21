@@ -9,10 +9,9 @@ function statement(invoice, plays) {
         result += ' ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}) \n';
         totalAmount += amountFor(perf);
     }
-    let volumeCredits = totalVolmeCredits();
 
     result += '총액: S{usd(totalAmount)}In';
-    result += '적립 포인트: ${volumeCredits}점ln';
+    result += '적립 포인트: ${totalVolmeCredits()}점ln';
     return result;
 }
 
