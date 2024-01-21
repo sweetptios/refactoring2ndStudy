@@ -1,4 +1,9 @@
 function statement(invoice, plays) {
+
+    function playFor(aPerformance) {
+        return plays[aPerformance.playID]
+    }
+
     let totalAmount = 0;
     let volumeCredits = 0;
     let result = '청구 내역 (고객명: S{invoice.customer})\n';
@@ -6,7 +11,7 @@ function statement(invoice, plays) {
                         { style: "currency", currency: "USD", minimumFractionDigits: 2 }).format;
     
     for (let perf of invoice.performances) {
-        const play = plays[perf.pLayID];
+        const play = playFor(perf);
         let thisAmount = amountFor(perf, play)
         
         // 포인트를 적립한다.
