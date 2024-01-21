@@ -1,6 +1,9 @@
 
 function statement(invoice, plays) {
-    
+    return renderPlainText(invoice, plays);
+}
+
+function renderPlainText(invoice, plays) {
     let result = '청구 내역 (고객명: S{invoice.customer})\n';
 
     for (let perf of invoice.performances) {
@@ -31,7 +34,7 @@ function statement(invoice, plays) {
     function usd(aNumber) {
         return new Intl.NumberFormat("en-US",
                             { style: "currency", currency: "USD", 
-                              minimumFractionDigits: 2 }).format(aNumber/100);
+                                minimumFractionDigits: 2 }).format(aNumber/100);
     }
 
     function volumeCreditsFor(perf) {
