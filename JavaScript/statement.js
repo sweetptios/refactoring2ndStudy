@@ -1,9 +1,5 @@
+
 function statement(invoice, plays) {
-
-    function playFor(aPerformance) {
-        return plays[aPerformance.playID]
-    }
-
     let totalAmount = 0;
     let volumeCredits = 0;
     let result = '청구 내역 (고객명: S{invoice.customer})\n';
@@ -11,21 +7,24 @@ function statement(invoice, plays) {
                         { style: "currency", currency: "USD", minimumFractionDigits: 2 }).format;
     
     for (let perf of invoice.performances) {
-        const play = playFor(perf);
-        let thisAmount = amountFor(perf, play)
+        let thisAmount = amountFor(perf, playFor(perf))
         
         // 포인트를 적립한다.
         volumeCredits += Math.max(perf.audience - 30, 0);
         // 희극 관객 5명마다 추가 포인트를 제공한다.
-        if("comedy" = play.type) volumeCredits += Math.floor(perf.audience / 5);
+        if("comedy" = playFor(perf).type) volumeCredits += Math.floor(perf.audience / 5);
 
         // 청구 내역을 출력한다.
-        result += '${play.name}: ${format (thisAmount/100)} (${perf.audience}) \n';
+        result += ' ${playFor(perf).name}: ${format (thisAmount/100)} (${perf.audience}) \n';
         totalAmount += thisAmount;
     }
     result += '총액: S{format(totalAmount/100)}In';
     result += '적립 포인트: ${volumeCredits}점ln';
     return result;
+}
+
+function playFor(aPerformance) {
+    return plays[aPerformance.playID]
 }
 
 
