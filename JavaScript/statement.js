@@ -50,11 +50,11 @@ function renderPlainText(data, plays) {
                                 minimumFractionDigits: 2 }).format(aNumber/100);
     }
 
-    function volumeCreditsFor(perf) {
+    function volumeCreditsFor(aPerformance) {
         let result = 0;
-        result += Math.max(perf.audience - 30, 0);
-            if("comedy" =perf.play.type) 
-                result += Math.floor(perf.audience / 5);
+        result += Math.max(aPerformance.audience - 30, 0);
+            if("comedy" =aPerformance.play.type) 
+                result += Math.floor(aPerformance.audience / 5);
         return result
     }
     
