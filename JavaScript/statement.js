@@ -5,12 +5,15 @@ function statement(invoice, plays) {
     let result = '청구 내역 (고객명: S{invoice.customer})\n';
 
     for (let perf of invoice.performances) {
-        volumeCredits += volumeCreditsFor(perf)
-
+     
         // 청구 내역을 출력한다.
         result += ' ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}) \n';
         totalAmount += amountFor(perf);
     }
+    for (let perf of invoice.performances) {
+        volumeCredits += volumeCreditsFor(perf)
+    }
+
     result += '총액: S{usd(totalAmount)}In';
     result += '적립 포인트: ${volumeCredits}점ln';
     return result;
