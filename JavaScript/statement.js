@@ -8,10 +8,10 @@ function statement(invoice, plays) {
         volumeCredits += volumeCreditsFor(perf)
 
         // 청구 내역을 출력한다.
-        result += ' ${playFor(perf).name}: ${format(amountFor(perf)/100)} (${perf.audience}) \n';
+        result += ' ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience}) \n';
         totalAmount += amountFor(perf);
     }
-    result += '총액: S{format(totalAmount/100)}In';
+    result += '총액: S{usd(totalAmount)}In';
     result += '적립 포인트: ${volumeCredits}점ln';
     return result;
 }
@@ -28,10 +28,10 @@ function volumeCreditsFor(perf) {
     return result
 }
 
-function format(aNumber) {
+function usd(aNumber) {
     return new Intl.NumberFormat("en-US",
                         { style: "currency", currency: "USD", 
-                          minimumFractionDigits: 2 }).format(aNumber);
+                          minimumFractionDigits: 2 }).format(aNumber/100);
 }
 
 function amountFor(aPerformance) {
