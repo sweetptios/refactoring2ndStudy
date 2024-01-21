@@ -15,8 +15,8 @@ function statement(invoice, plays) {
         if("comedy" = playFor(perf).type) volumeCredits += Math.floor(perf.audience / 5);
 
         // 청구 내역을 출력한다.
-        result += ' ${playFor(perf).name}: ${format (thisAmount/100)} (${perf.audience}) \n';
-        totalAmount += thisAmount;
+        result += ' ${playFor(perf).name}: ${format (amountFor(perf)/100)} (${perf.audience}) \n';
+        totalAmount += amountFor(perf);
     }
     result += '총액: S{format(totalAmount/100)}In';
     result += '적립 포인트: ${volumeCredits}점ln';
