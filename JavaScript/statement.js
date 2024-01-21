@@ -7,8 +7,6 @@ function statement(invoice, plays) {
                         { style: "currency", currency: "USD", minimumFractionDigits: 2 }).format;
     
     for (let perf of invoice.performances) {
-        let thisAmount = amountFor(perf)
-        
         // 포인트를 적립한다.
         volumeCredits += Math.max(perf.audience - 30, 0);
         // 희극 관객 5명마다 추가 포인트를 제공한다.
