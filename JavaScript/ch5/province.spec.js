@@ -4,7 +4,11 @@ import { Province, sampleProvinceData } from './province.js';
 import Producer from './producer.js';
 
 describe('province', function() {
-    const asia = new Province(sampleProvinceData());
+    let asia;
+    beforeEach(function() {
+        asia = new Province(sampleProvinceData());
+    });
+
     it('shortfall', function() {
         expect(asia.shortfall).equal(5);
     });
