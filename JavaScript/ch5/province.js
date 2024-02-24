@@ -38,7 +38,7 @@ class Province {
     set price(arg) {this._price = parseInt(arg);}
 
     get shortfall() {
-        return this._demand - this.totalProduction * 2;
+        return this._demand - this.totalProduction;
     }
 
     get demandValue() {
