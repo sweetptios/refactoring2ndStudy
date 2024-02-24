@@ -1,3 +1,4 @@
+// Producer.js
 class Producer {
     constructor(aProvince, data) {
         this._province = aProvince;
@@ -18,4 +19,4 @@ class Producer {
     }
 }
 
-module.exports = Producer;
+export default Producer;

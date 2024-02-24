@@ -1,11 +1,11 @@
-// test.js
-const assert = require('assert');
-const{ Province, sampleProvinceData } = require('./province');
-const Producer = require('./producer');
+// province.spec.js
+import { expect } from 'chai';
+import { Province, sampleProvinceData } from './province.js';
+import Producer from './producer.js';
 
 describe('province', function() {
     it('shortfall', function() {
         const asia = new Province(sampleProvinceData());
-        assert.equal(asia.shortfall, 5);
+        expect(asia.shortfall).equal(5);
     });
 });
