@@ -23,3 +23,22 @@ describe('province', function() {
         expect(asia.profit).equal(292);
     });
 });
+
+describe('no producers', function() {
+    let noProducers;
+    beforeEach(function() {
+        const data = {
+            name: "No producers",
+            producers: [],
+            demand: 30,
+            price: 20
+        };
+        noProducers = new Province(data);
+    });
+    it('shortfall', function() {
+        expect(noProducers.shortfall).equal(30);        
+    });
+    it('profit', function() {
+        expect(noProducers.profit).equal(0);
+    });
+});
